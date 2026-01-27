@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Grey Moose Technologies, Inc. — AI-accelerated custom mobile app and backend development in Edmonton, Alberta." />
+  <title>Grey Moose Technologies, Inc. — AI-Accelerated Software Development</title>
+
+  <style>
+    :root{
+      --ink:#0B0F19;
+      --slate:#475569;
+      --muted:#64748B;
+      --line:#E2E8F0;
+      --surface:#F8FAFC;
+      --white:#FFFFFF;
+
+      /* Accent (Teal) */
+      --accent:#14B8A6;
+      --accent-ink:#0F766E;
+
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+
+      --max: 1120px;
+      --pad: 20px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:var(--white);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    p{margin:0}
+    h1,h2,h3{margin:0; line-height:1.1}
+    .container{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .section{padding:72px 0}
+    .section.alt{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border:1px solid var(--line);
+      background:var(--surface); border-radius:999px;
+      font-size:12px; color:var(--slate);
+    }
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid transparent;
+      transition: transform .08s ease, opacity .12s ease, background .12s ease, border-color .12s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:var(--ink); color:var(--white)}
+    .btn.primary:hover{opacity:.92}
+    .btn.secondary{background:transparent; border-color:var(--line); color:var(--ink)}
+    .btn.secondary:hover{background:var(--surface)}
+    .btn.accent{background:var(--accent); color:var(--ink)}
+    .btn.accent:hover{opacity:.92}
+
+    /* Top Nav */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.82);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:240px;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:14px;background:var(--ink);
+      position:relative; overflow:hidden;
+    }
+    .logo:before{
+      content:""; position:absolute; inset:-30%;
+      background: radial-gradient(circle at 30% 30%, rgba(20,184,166,.55), transparent 45%),
+                  radial-gradient(circle at 70% 70%, rgba(59,130,246,.30), transparent 45%);
+      transform: rotate(12deg);
+    }
+    .brand-title{font-size:13px; font-weight:800}
+    .brand-sub{font-size:12px; color:var(--muted); margin-top:2px}
+    nav.desktop{
+      display:none;
+      gap:18px;
+      align-items:center;
+    }
+    nav.desktop a{
+      font-size:13px;
+      color:var(--slate);
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    nav.desktop a:hover{color:var(--ink); background:var(--surface)}
+    .nav-cta{display:flex; gap:10px; align-items:center}
+
+    /* Mobile menu */
+    .menu-btn{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px; border-radius:14px;
+      border:1px solid var(--line); background:var(--white);
+      font-weight:700; font-size:13px; color:var(--ink);
+    }
+    .menu-panel{
+      display:none;
+      border-top:1px solid var(--line);
+      background:var(--white);
+    }
+    .menu-panel.open{display:block}
+    .menu-links{
+      display:flex; flex-direction:column; padding:12px var(--pad);
+      gap:6px;
+    }
+    .menu-links a{
+      padding:10px 12px; border-radius:14px; border:1px solid var(--line);
+      background:var(--surface); font-size:13px; color:var(--slate);
+    }
+    .menu-links a:hover{color:var(--ink)}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 40px;
+    }
+    .grid-2{
+      display:grid;
+      gap:28px;
+      grid-template-columns: 1fr;
+      align-items:center;
+    }
+    .hero h1{
+      font-size:40px;
+      letter-spacing:-0.02em;
+    }
+    .hero p.lead{
+      margin-top:14px;
+      font-size:16px;
+      color:var(--slate);
+      max-width:56ch;
+    }
+    .hero-actions{margin-top:22px; display:flex; gap:12px; flex-wrap:wrap}
+    .trustline{margin-top:12px; font-size:13px; color:var(--muted)}
+    .visual{
+      border:1px solid var(--line);
+      background:var(--surface);
+      border-radius:var(--radius-xl);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    .visual-box{
+      height:240px;
+      border-radius:var(--radius-lg);
+      border:1px dashed #CBD5E1;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(20,184,166,.18), transparent 45%),
+        radial-gradient(circle at 70% 65%, rgba(59,130,246,.14), transparent 45%),
+        #ffffff;
+      position:relative;
+      overflow:hidden;
+    }
+    .node{
+      position:absolute; width:10px;height:10px;border-radius:999px;background:var(--accent);
+      box-shadow: 0 0 0 6px rgba(20,184,166,.12);
+    }
+    .node.n1{left:22%; top:28%}
+    .node.n2{left:52%; top:40%}
+    .node.n3{left:72%; top:65%}
+    .node.n4{left:38%; top:72%}
+    .visual-caption{margin-top:10px; font-size:13px; color:var(--slate)}
+
+    /* Section headers */
+    .sec-head .eyebrow{
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .sec-head h2{
+      margin-top:10px;
+      font-size:28px;
+      letter-spacing:-0.01em;
+    }
+    .sec-head p{
+      margin-top:10px;
+      color:var(--slate);
+      max-width:70ch;
+      font-size:15px;
+    }
+
+    /* Cards */
+    .cards{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      padding:18px;
+      box-shadow: 0 6px 16px rgba(2, 6, 23, 0.04);
+    }
+    .card .top{
+      display:flex; gap:12px; align-items:center;
+    }
+    .icon{
+      width:42px;height:42px;border-radius:16px;
+      background:var(--ink); color:var(--white);
+      display:flex;align-items:center;justify-content:center;
+      font-size:18px;
+    }
+    .card h3{font-size:15px; font-weight:900}
+    .card p{margin-top:8px; color:var(--slate); font-size:14px}
+
+    /* AI workflow */
+    .workflow{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      align-items:start;
+    }
+    .flow-box{
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      background:var(--surface);
+      padding:18px;
+    }
+    .flow-title{font-size:13px; font-weight:900}
+    .flow-steps{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .pill{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:10px 12px;
+      font-size:13px;
+      text-align:center;
+      font-weight:800;
+    }
+    .flow-notes{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--slate);
+    }
+    .bullets{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      padding:18px;
+    }
+    .bullets ul{margin:0; padding-left:18px; color:var(--slate); font-size:14px}
+    .bullets li{margin:8px 0}
+
+    /* Process */
+    .steps{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .step{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      padding:18px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .step-num{
+      width:40px;height:40px;border-radius:16px;
+      background:var(--ink); color:var(--white);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900; font-size:14px;
+      flex:0 0 auto;
+    }
+    .step h3{font-size:14px; font-weight:900}
+    .step p{margin-top:6px; color:var(--slate); font-size:14px}
+
+    /* Moose App callout */
+    .callout{
+      margin-top:26px;
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      padding:22px;
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      align-items:start;
+    }
+    .callout .tag{
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .callout h2{font-size:26px}
+    .callout p{margin-top:10px; color:var(--slate); font-size:14px}
+    .callout-box{
+      border:1px dashed #CBD5E1;
+      border-radius:var(--radius-xl);
+      background:var(--surface);
+      height:180px;
+      position:relative;
+      overflow:hidden;
+    }
+    .callout-box:before{
+      content:"";
+      position:absolute; inset:-20%;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(20,184,166,.22), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(14,165,233,.14), transparent 45%);
+      transform: rotate(-8deg);
+    }
+    .callout-box .label{
+      position:absolute; left:16px; bottom:14px;
+      font-size:12px; color:var(--slate);
+      background:rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* CTA */
+    .cta{
+      border-radius:var(--radius-xl);
+      background:var(--ink);
+      color:var(--white);
+      padding:26px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      align-items:center;
+    }
+    .cta h2{font-size:26px}
+    .cta p{color:rgba(255,255,255,.75); font-size:14px; max-width:70ch}
+    .cta .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .cta .btn.primary{background:var(--white); color:var(--ink)}
+    .cta .btn.secondary{border-color:rgba(255,255,255,.28); color:var(--white)}
+    .cta .btn.secondary:hover{background:rgba(255,255,255,.08)}
+
+    /* Footer */
+    footer{
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .foot-links{display:flex; gap:12px; flex-wrap:wrap}
+    .foot-links a{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--surface);
+    }
+
+    /* Responsive */
+    @media (min-width: 860px){
+      :root{ --pad: 24px; }
+      nav.desktop{display:flex}
+      .menu-btn{display:none}
+      .menu-panel{display:none !important}
+
+      .grid-2{grid-template-columns: 1.1fr .9fr; gap:34px}
+      .hero h1{font-size:52px}
+      .hero p.lead{font-size:18px}
+
+      .cards{grid-template-columns: repeat(3, 1fr)}
+      .workflow{grid-template-columns: 1fr 1fr}
+      .flow-steps{grid-template-columns: repeat(5, 1fr)}
+      .steps{grid-template-columns: repeat(4, 1fr)}
+      .step{flex-direction:column}
+      .step-num{width:44px;height:44px}
+      .callout{grid-template-columns: 1.1fr .9fr}
+      .cta{grid-template-columns: 1.2fr .8fr; padding:34px}
+      footer{flex-direction:row; align-items:center; justify-content:space-between}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Grey Moose Technologies Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div class="brand-title">Grey Moose Technologies, Inc.</div>
+            <div class="brand-sub">Edmonton, Alberta • Canada</div>
+          </div>
+        </a>
+
+        <nav class="desktop" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#ai-workflow">AI Workflow</a>
+          <a href="#process">Process</a>
+          <a href="#moose-app">Moose App</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">
+            Menu ☰
+          </button>
+          <a class="btn primary" href="#contact">Book a free consult</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-links">
+        <a href="#services">Services</a>
+        <a href="#ai-workflow">AI Workflow</a>
+        <a href="#process">Process</a>
+        <a href="#moose-app">Moose App</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <div class="badge">
+              <span class="dot" aria-hidden="true"></span>
+              AI-accelerated delivery • Human-owned quality
+            </div>
+
+            <h1 style="margin-top:14px;">
+              AI-accelerated custom software development for small businesses
+            </h1>
+
+            <p class="lead">
+              We build mobile apps and backend systems faster—without cutting corners—by combining senior engineering
+              with an AI-assisted delivery workflow.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">Book a free consult</a>
+              <a class="btn secondary" href="#services">See services</a>
+              <a class="btn accent" href="#ai-workflow" title="Learn about our AI workflow">How AI helps</a>
+            </div>
+
+            <div class="trustline">
+              Clear milestones • Weekly demos • Source code ownership
+            </div>
+          </div>
+
+          <div class="visual" aria-label="Abstract visual placeholder">
+            <div class="visual-box" role="img" aria-label="Abstract AI nodes graphic">
+              <span class="node n1"></span>
+              <span class="node n2"></span>
+              <span class="node n3"></span>
+              <span class="node n4"></span>
+            </div>
+            <div class="visual-caption">
+              Minimal, modern visuals to communicate “AI + engineering”—no hype.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section alt">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow">Services</div>
+          <h2>What we build</h2>
+          <p>
+            Mobile apps, backends, and ecommerce integrations—delivered with a fast, disciplined workflow.
+          </p>
+        </div>
+
+        <div class="cards" style="margin-top:22px;">
+          <article class="card">
+            <div class="top">
+              <div class="icon" aria-hidden="true">📱</div>
+              <h3>Custom Mobile Apps</h3>
+            </div>
+            <p>Flutter iOS/Android apps with clean architecture, scalable features, and maintainable code.</p>
+          </article>
+
+          <article class="card">
+            <div class="top">
+              <div class="icon" aria-hidden="true">⚙️</div>
+              <h3>Backend & Integrations</h3>
+            </div>
+            <p>Node.js APIs, auth, payments, notifications, admin tooling, and third-party integrations.</p>
+          </article>
+
+          <article class="card">
+            <div class="top">
+              <div class="icon" aria-hidden="true">🛒</div>
+              <h3>Ecommerce & Catalog Apps</h3>
+            </div>
+            <p>Customer-facing shopping experiences powered by Shopify or WooCommerce backends.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Workflow -->
+    <section id="ai-workflow" class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow">AI Workflow</div>
+          <h2>Faster delivery, same engineering standards</h2>
+          <p>
+            AI helps accelerate repetitive work—humans stay accountable for architecture, security, and quality.
+          </p>
+        </div>
+
+        <div class="workflow">
+          <div class="flow-box">
+            <div class="flow-title">Delivery flow</div>
+            <div class="flow-steps" aria-label="Delivery flow steps">
+              <div class="pill">Idea</div>
+              <div class="pill">Prototype</div>
+              <div class="pill">Build</div>
+              <div class="pill">Test</div>
+              <div class="pill">Launch</div>
+            </div>
+            <div class="flow-notes">Tip: replace with arrows/lines in final design.</div>
+          </div>
+
+          <div class="bullets">
+            <ul>
+              <li>Rapid prototyping and UI scaffolding</li>
+              <li>Accelerated implementation of common modules</li>
+              <li>Structured code reviews and quality gates</li>
+              <li>Test coverage and regression checks</li>
+              <li>Documentation that stays current</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section alt">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow">Outcomes</div>
+          <h2>Built to launch—and keep improving</h2>
+          <p>
+            We focus on shipping real value, then making iteration cheaper and faster over time.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="top"><div class="icon" aria-hidden="true">⚡</div><h3>Ship faster</h3></div>
+            <p>Accelerate delivery with AI-assisted workflows and senior engineering ownership.</p>
+          </article>
+          <article class="card">
+            <div class="top"><div class="icon" aria-hidden="true">🧱</div><h3>Lower long-term cost</h3></div>
+            <p>Modular codebases that stay easy to change as your business grows.</p>
+          </article>
+          <article class="card">
+            <div class="top"><div class="icon" aria-hidden="true">✅</div><h3>Reliable releases</h3></div>
+            <p>Pragmatic testing + review loops to reduce regressions and surprises.</p>
+          </article>
+          <article class="card">
+            <div class="top"><div class="icon" aria-hidden="true">🗓️</div><h3>Clear milestones</h3></div>
+            <p>Weekly demos and tight feedback cycles so progress is visible.</p>
+          </article>
+          <article class="card">
+            <div class="top"><div class="icon" aria-hidden="true">🔓</div><h3>You own the source</h3></div>
+            <p>No lock-in. Full code handover and documentation.</p>
+          </article>
+          <article class="card">
+            <div class="top"><div class="icon" aria-hidden="true">🔌</div><h3>Built to integrate</h3></div>
+            <p>Shopify/WooCommerce + modern API patterns for real-world systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow">Process</div>
+          <h2>How we work</h2>
+          <p>Simple steps, clear deliverables, and tight feedback loops.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Discovery</h3>
+              <p>Define goals, scope, constraints, and success metrics.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Prototype</h3>
+              <p>Flow + UI preview + technical plan to align early.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Build & Iterate</h3>
+              <p>Weekly demos, fast iterations, and prioritized delivery.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Launch & Support</h3>
+              <p>Release, monitoring, handover, and continuous improvements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moose App -->
+    <section id="moose-app" class="section alt">
+      <div class="container">
+        <div class="callout">
+          <div>
+            <div class="tag">Internal Accelerator</div>
+            <h2 style="margin-top:10px;">Moose App helps us deliver faster</h2>
+            <p>
+              Moose App is our AI-optimized Flutter foundation used internally to accelerate custom mobile apps—
+              especially for Shopify and WooCommerce backends. It’s not one-size-fits-all; we tailor it to your business.
+            </p>
+          </div>
+          <div class="callout-box" role="img" aria-label="Moose App placeholder visual">
+            <div class="label">Placeholder: architecture diagram / template preview</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Ready to build your app?</h2>
+            <p style="margin-top:10px;">
+              Book a free consult and we’ll outline a clear plan: scope, timeline, and a cost range.
+            </p>
+          </div>
+
+          <div class="actions">
+            <!-- Replace with your real email -->
+            <a class="btn primary" href="mailto:hello@greymoose.ca">Email us</a>
+
+            <!-- Replace with your real booking link -->
+            <a class="btn secondary" href="#" onclick="alert('Replace this with your Calendly/booking link.'); return false;">
+              Booking link
+            </a>
+          </div>
+        </div>
+
+        <footer>
+          <div>© <span id="year"></span> Grey Moose Technologies, Inc. • Edmonton, AB, Canada</div>
+          <div class="foot-links">
+            <!-- Replace with your real links -->
+            <a href="#" onclick="alert('Replace with your LinkedIn URL.'); return false;">LinkedIn</a>
+            <a href="#top">Back to top</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btn = document.getElementById("menuBtn");
+    const panel = document.getElementById("menuPanel");
+
+    if (btn && panel) {
+      btn.addEventListener("click", () => {
+        const open = panel.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+
+      // Close menu when a link is clicked
+      panel.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => {
+          panel.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  </script>
+</body>
+</html>
