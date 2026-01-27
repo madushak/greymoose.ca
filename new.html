@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Grey Moose Technologies, Inc. — AI-accelerated custom mobile app and backend development in Edmonton, Alberta." />
   <title>Grey Moose Technologies, Inc. — AI-Accelerated Software Development</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{
       /* Clean + light theme */
@@ -36,13 +38,16 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+                   Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background: var(--bg);
       color: var(--text);
       line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a{color:inherit;text-decoration:none}
-    h1,h2,h3{margin:0; line-height:1.15}
+    h1,h2,h3{letter-spacing: -0.02em;}
     p{margin:0}
     .container{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
     .section{padding:76px 0}
