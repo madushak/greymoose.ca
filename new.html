@@ -440,6 +440,30 @@
       background-repeat: no-repeat;
       z-index: 0;
     }
+
+    .hero-dot-mesh {
+      position: absolute;
+      inset: 0;
+    
+      /* Dot pattern */
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.55) 1px,
+          transparent 1.6px
+        );
+    
+      /* Spacing between dots */
+      background-size: 24px 24px;
+    
+      /* Soft fade so it doesn't overpower */
+      opacity: 0.35;
+    
+      /* Keep it subtle */
+      pointer-events: none;
+    
+      z-index: 0;
+    }
     
     /* Keep hero content above background */
     .hero-bg .container {
@@ -504,6 +528,7 @@
     <!-- Hero -->
     <section class="hero hero-bg">
       <div class="hero-bg-layer" aria-hidden="true"></div>
+      <div class="hero-dot-mesh" aria-hidden="true"></div>
       <div class="container">
         <div class="grid-2">
           <div>
