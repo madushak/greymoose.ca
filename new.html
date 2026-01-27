@@ -428,6 +428,7 @@
     .hero-bg {
       position: relative;
       overflow: hidden;
+      height: 1150px;
     }
     
     .hero-bg-layer {
@@ -453,18 +454,7 @@
       background: rgba(0, 0, 0, 0.3);
       z-index: 0;
     }
-    
-    /* Optional: soften background on small screens */
-    @media (max-width: 768px) {
-      .hero-bg-layer {
-        transform:
-          perspective(800px)
-          rotateX(3deg)
-          rotateY(-3deg)
-          scale(1.2);
-        opacity: 0.18;
-      }
-    }
+  
   </style>
 </head>
 
