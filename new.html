@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Grey Moose Technologies, Inc. — AI-accelerated custom mobile app and backend development in Edmonton, Alberta." />
   <title>Grey Moose Technologies, Inc. — AI-Accelerated Software Development</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       /* Clean + light theme */
@@ -32,6 +34,10 @@
 
       --max: 1120px;
       --pad: 20px;
+
+      /* Tile system (no rounded corners) */
+      --tile-radius: 0px;
+      --tile-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
     }
 
     *{box-sizing:border-box}
@@ -42,12 +48,10 @@
                    Segoe UI, Roboto, Helvetica, Arial;
       background: var(--bg);
       color: var(--text);
-    
-      /* Better vertical rhythm */
       line-height: 1.6;
-    
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x:hidden;
     }
     main{
       max-width: 1200px;
@@ -135,7 +139,7 @@
       color: white;
       border-color: transparent;
     }
-    .btn.ghost:hover{background:var(--surface); color: var(--text)}
+    .btn.ghost:hover{background:rgba(255,255,255,.10); color: white}
 
     /* Mobile menu */
     .menu-btn{
@@ -176,11 +180,12 @@
       display:inline-flex; align-items:center; gap:10px;
       padding:8px 12px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--muted);
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.10);
+      color: rgba(255,255,255,.92);
       font-size: 12px;
       font-weight:700;
+      backdrop-filter: blur(8px);
     }
     .dot{width:8px;height:8px;border-radius:999px;background: var(--accent)}
     .hero h1{
@@ -192,36 +197,15 @@
     }
     .hero .lead{
       margin-top:14px;
-      color: white;
+      color: rgba(255,255,255,.90);
       font-size:16px;
       max-width: 62ch;
     }
     .hero-actions{margin-top:22px; display:flex; gap:12px; flex-wrap:wrap}
-    .trustline{margin-top:12px; font-size:13px; color: white;}
-    .hero-card{
-      padding: 20px;
-    }
-    .visual{
-      height: 250px;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(37,99,235,.18);
-      background:
-        radial-gradient(circle at 25% 30%, rgba(37,99,235,.18), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(99,102,241,.12), transparent 52%),
-        #ffffff;
-      position:relative;
-      overflow:hidden;
-    }
-    .chip-row{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap}
-    .chip{
-      font-size:12px;
-      color: var(--muted);
-      background: white;
-      border:1px solid var(--line);
-      padding:7px 10px;
-      border-radius:999px;
-      font-weight:700;
-    }
+    .trustline{margin-top:12px; font-size:13px; color: rgba(255,255,255,.88);}
+
+    .hero-card{padding: 20px;}
+    .hero-image{width:100%; height:auto; display:block; max-width:100%;}
 
     /* Section header */
     .sec-head .eyebrow{
@@ -243,22 +227,46 @@
       max-width: 76ch;
     }
 
-    /* Cards */
-    .cards{margin-top:26px; display:grid; grid-template-columns: 1fr; gap:16px}
-    .card{
+    /* --- TILE CARDS (NO ROUNDED CORNERS) --- */
+    .cards{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:0;
       border:1px solid var(--line);
-      border-radius: var(--radius-xl);
+      border-radius: var(--tile-radius);
+      overflow:hidden;
+      background: white;
+      box-shadow: var(--tile-shadow);
+    }
+    .card{
+      border:0;
+      border-radius: 0;
       background: white;
       padding: 18px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
     }
+    .card + .card{ border-top:1px solid var(--line); }
+
+    @media (min-width: 860px){
+      .cards{ grid-template-columns: repeat(3, 1fr); }
+      .card + .card{ border-top:0; }
+      .card{
+        border-right:1px solid var(--line);
+        border-bottom:1px solid var(--line);
+      }
+      .cards > .card:nth-child(3n){ border-right:0; }
+      .cards > .card:nth-last-child(-n+3){ border-bottom:0; }
+    }
+
     .card-top{display:flex; align-items:center; gap:12px}
     .icon{
-      width:42px;height:42px;border-radius: 14px;
+      width:42px;height:42px;border-radius: 0; /* no rounded corners */
       background: rgba(37,99,235,.10);
       border: 1px solid rgba(37,99,235,.18);
       display:flex; align-items:center; justify-content:center;
       font-size:18px;
+      flex:0 0 auto;
     }
     .card h3{font-size:15px; font-weight:900}
     .card p{margin-top:8px; font-size:14px; color: var(--muted)}
@@ -267,7 +275,7 @@
     .workflow{margin-top:26px; display:grid; grid-template-columns: 1fr; gap:16px; align-items:start}
     .panel{
       border:1px solid var(--line);
-      border-radius: var(--radius-xl);
+      border-radius: 0; /* tile look */
       background: white;
       padding: 18px;
       box-shadow: var(--shadow-sm);
@@ -280,12 +288,18 @@
       margin-top:12px;
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:10px;
+      gap:0;
+      border:1px solid var(--line);
+      border-radius: 0;
+      overflow:hidden;
+      background:white;
     }
     .pill{
       padding:10px 12px;
-      border-radius: 16px;
-      border:1px solid var(--line);
+      border-radius: 0;
+      border:0;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
       background: white;
       font-size:13px;
       font-weight:900;
@@ -295,28 +309,41 @@
     .pill:before{
       content:"";
       position:absolute; inset:0;
-      border-radius: 16px;
       background: linear-gradient(135deg, rgba(37,99,235,.10), transparent 60%);
-      opacity:.6;
+      opacity:.55;
       pointer-events:none;
     }
+    .flow .pill:nth-child(2n){ border-right:0; }
+    .flow .pill:nth-last-child(-n+2){ border-bottom:0; }
+
     .list{margin:0; padding-left:18px; color: var(--muted); font-size:14px}
     .list li{margin:8px 0}
 
     /* Process */
-    .steps{margin-top:26px; display:grid; grid-template-columns: 1fr; gap:16px}
-    .step{
+    .steps{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:0;
       border:1px solid var(--line);
-      border-radius: var(--radius-xl);
+      border-radius: 0;
+      overflow:hidden;
+      background:white;
+      box-shadow: var(--tile-shadow);
+    }
+    .step{
+      border:0;
+      border-radius:0;
       background: white;
       padding: 18px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
       display:flex;
       gap:12px;
       align-items:flex-start;
     }
+    .step + .step{ border-top:1px solid var(--line); }
     .step-num{
-      width:40px;height:40px;border-radius: 14px;
+      width:40px;height:40px;border-radius: 0; /* no rounded corners */
       background: rgba(37,99,235,.12);
       border: 1px solid rgba(37,99,235,.18);
       color: var(--accent-2);
@@ -327,11 +354,36 @@
     .step h3{font-size:14px; font-weight:900}
     .step p{margin-top:6px; font-size:14px; color: var(--muted)}
 
+    @media (min-width: 860px){
+      nav.desktop{display:flex}
+      .menu-btn{display:none}
+      .menu-panel{display:none !important}
+      .top-main-btn{display:block}
+
+      .grid-2{grid-template-columns: 1.15fr .85fr; gap:34px}
+      .hero h1{font-size: 52px}
+      .hero .lead{font-size:18px}
+
+      .workflow{grid-template-columns: 1fr 1fr}
+
+      .flow{ grid-template-columns: repeat(5, 1fr); }
+      .flow .pill{ border-bottom:0; }
+      .flow .pill{ border-right:1px solid var(--line); }
+      .flow .pill:last-child{ border-right:0; }
+
+      .steps{ grid-template-columns: repeat(4, 1fr); }
+      .step + .step{ border-top:0; }
+      .step{ border-right:1px solid var(--line); flex-direction:column; }
+      .steps .step:last-child{ border-right:0; }
+
+      footer{flex-direction:row; align-items:center; justify-content:space-between}
+    }
+
     /* Callout */
     .callout{
       margin-top:26px;
       border:1px solid var(--line);
-      border-radius: var(--radius-xl);
+      border-radius: 0;
       background: linear-gradient(180deg, var(--surface), white);
       padding: 22px;
       box-shadow: var(--shadow);
@@ -351,7 +403,7 @@
     .callout p{margin-top:10px; font-size:14px; color: var(--muted)}
     .callout-visual{
       height: 190px;
-      border-radius: var(--radius-xl);
+      border-radius: 0;
       border: 1px solid rgba(37,99,235,.18);
       background:
         radial-gradient(circle at 25% 30%, rgba(37,99,235,.16), transparent 52%),
@@ -375,7 +427,7 @@
     /* CTA */
     .cta{
       border:1px solid var(--line);
-      border-radius: var(--radius-xl);
+      border-radius: 0;
       background: white;
       padding: 22px;
       box-shadow: var(--shadow);
@@ -409,34 +461,12 @@
     .foot-links a:hover{background: var(--surface-2)}
     .top-main-btn{display:none}
 
-    /* Responsive */
-    @media (min-width: 860px){
-      :root{ --pad: 24px; }
-      nav.desktop{display:flex}
-      .menu-btn{display:none}
-      .menu-panel{display:none !important}
-      .top-main-btn{display:block}
-      
-      .grid-2{grid-template-columns: 1.15fr .85fr; gap:34px}
-      .hero h1{font-size: 52px}
-      .hero .lead{font-size:18px}
-
-      .cards{grid-template-columns: repeat(3, 1fr)}
-      .workflow{grid-template-columns: 1fr 1fr}
-      .flow{grid-template-columns: repeat(5, 1fr)}
-      .steps{grid-template-columns: repeat(4, 1fr)}
-      .step{flex-direction:column}
-      .callout{grid-template-columns: 1.1fr .9fr}
-      .cta{grid-template-columns: 1.2fr .8fr; padding: 28px}
-      footer{flex-direction:row; align-items:center; justify-content:space-between}
-    }
-
+    /* Hero background */
     .hero-bg {
       position: relative;
       overflow: hidden;
       height: 1150px;
     }
-    
     .hero-bg-layer {
       position: absolute;
       inset: 0%;
@@ -446,31 +476,20 @@
       background-repeat: no-repeat;
       z-index: 0;
     }
-
     .hero-dot-mesh {
       position: absolute;
       inset: 0;
-    
-      /* Dot pattern */
       background-image:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,0.55) 1px,
-          transparent 1.6px
-        );
-    
+        radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1.6px);
       background-size: 44px 44px;
       opacity: 0.85;
       pointer-events: none;
       z-index: 0;
     }
-    
-    /* Keep hero content above background */
     .hero-bg .container {
       position: relative;
       z-index: 1;
     }
-
     .hero-bg::after {
       content: "";
       position: absolute;
@@ -478,7 +497,6 @@
       background: rgba(0, 0, 0, 0.3);
       z-index: 0;
     }
-  
   </style>
 </head>
 
@@ -529,6 +547,7 @@
     <section class="hero hero-bg">
       <div class="hero-bg-layer" aria-hidden="true"></div>
       <div class="hero-dot-mesh" aria-hidden="true"></div>
+
       <div class="container">
         <div class="grid-2">
           <div>
@@ -553,13 +572,12 @@
             <div class="trustline">Clear milestones • Weekly demos • Source code ownership</div>
           </div>
 
-          <div class="hero-card">
-            
-          </div>
+          <div class="hero-card"></div>
         </div>
+
         <div>
-          <div class="hero-card" style="text-align: center;">
-            <img src="hand.png">
+          <div class="hero-card" style="text-align:center;">
+            <img class="hero-image" src="hand.png" alt="Grey Moose Technologies" />
           </div>
         </div>
       </div>
@@ -755,10 +773,7 @@
           </div>
 
           <div class="cta-actions">
-            <!-- Replace with your real email -->
             <a class="btn primary" href="mailto:hello@greymoose.ca">Email us</a>
-
-            <!-- Replace with your booking link (Calendly etc.) -->
             <a class="btn secondary" href="#" onclick="alert('Replace this with your booking link (Calendly, etc.).'); return false;">
               Booking link
             </a>
@@ -768,7 +783,6 @@
         <footer>
           <div>© <span id="year"></span> Grey Moose Technologies, Inc. • Edmonton, AB, Canada</div>
           <div class="foot-links">
-            <!-- Replace with your real links -->
             <a href="#" onclick="alert('Replace with your LinkedIn URL.'); return false;">LinkedIn</a>
             <a href="#top">Back to top</a>
           </div>
