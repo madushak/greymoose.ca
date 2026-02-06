@@ -756,6 +756,10 @@
         min-height: 1050px;
       }
     }
+    /* Case study header with hero background - no fixed height */
+    .hero-bg:has(.case-study-header) {
+      min-height: auto;
+    }
     .hero-bg-layer {
       position: absolute;
       inset: 0%;
@@ -950,6 +954,7 @@
 
     .case-study-header{
       max-width: 800px;
+      padding-bottom: 40px;
     }
     .case-study-header h1{
       font-size: 36px;
@@ -961,6 +966,9 @@
       margin-top: 12px;
     }
     @media (min-width: 860px){
+      .case-study-header{
+        padding-bottom: 60px;
+      }
       .case-study-header h1{
         font-size: 48px;
       }
