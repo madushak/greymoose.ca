@@ -457,7 +457,7 @@
     .hero-bg-layer {
       position: absolute;
       inset: 0%;
-      background-image: url(ai.jpg);
+      background-image: url(ai.webp);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
