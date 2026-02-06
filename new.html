@@ -87,48 +87,26 @@
           <div class="hero-card"></div>
         </div>
 
-        <div>
-          <div class="hero-card" style="text-align:center;">
-            <img class="hero-image" src="hand.png" alt="Grey Moose Technologies" />
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="services" class="what-we-build" aria-label="What we build">
+          <h2 class="what-title">What we build</h2>
 
-    <!-- Services -->
-    <section id="services" class="section alt">
-      <div class="container">
-        <div class="sec-head">
-          <div class="eyebrow">Services</div>
-          <h2>What we build</h2>
-          <p>Mobile apps, backends, and ecommerce integrations—delivered with a fast, disciplined workflow.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-top">
-              <div class="icon" aria-hidden="true">📱</div>
+          <div class="what-panel" role="list">
+            <div class="what-col" role="listitem">
               <h3>Custom Mobile Apps</h3>
+              <p>Flutter-based iOS/Android apps with clean architecture, scalable features, and maintainable code.</p>
             </div>
-            <p>Flutter-based iOS/Android apps with clean architecture, scalable features, and maintainable code.</p>
-          </article>
 
-          <article class="card">
-            <div class="card-top">
-              <div class="icon" aria-hidden="true">⚙️</div>
+            <div class="what-col" role="listitem">
               <h3>Backend & Integrations</h3>
+              <p>Node.js APIs, authentication, payments, notifications, admin tooling, and third-party integrations.</p>
             </div>
-            <p>Node.js APIs, authentication, payments, notifications, admin tooling, and third-party integrations.</p>
-          </article>
 
-          <article class="card">
-            <div class="card-top">
-              <div class="icon" aria-hidden="true">🛒</div>
+            <div class="what-col" role="listitem">
               <h3>Ecommerce & Catalog Apps</h3>
+              <p>Customer-facing shopping experiences powered by Shopify or WooCommerce backends.</p>
             </div>
-            <p>Customer-facing shopping experiences powered by Shopify or WooCommerce backends.</p>
-          </article>
-        </div>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -144,27 +122,97 @@
         <div class="workflow">
           <div class="panel alt">
             <div class="panel-title">Delivery flow</div>
-            <div class="flow" aria-label="Delivery flow steps">
-              <div class="pill">Idea</div>
-              <div class="pill">Prototype</div>
-              <div class="pill">Build</div>
-              <div class="pill">Test</div>
-              <div class="pill">Launch</div>
+            <div class="delivery-timeline" aria-label="Delivery flow steps">
+              <div class="timeline-track"></div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Idea</div>
+                  <div class="timeline-desc">Discover & define</div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Prototype</div>
+                  <div class="timeline-desc">Design & validate</div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Build</div>
+                  <div class="timeline-desc">Develop & iterate</div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Test</div>
+                  <div class="timeline-desc">Verify & polish</div>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Launch</div>
+                  <div class="timeline-desc">Deploy & monitor</div>
+                </div>
+              </div>
             </div>
-            <p style="margin-top:12px; color:var(--muted); font-size:13px;">
-              Use this to run faster cycles while keeping reviews and quality gates consistent.
+            <p class="panel-note">
+              Fast cycles with consistent reviews and quality gates at every stage.
             </p>
           </div>
 
           <div class="panel">
             <div class="panel-title">What AI helps with</div>
-            <ul class="list" style="margin-top:12px;">
-              <li>Rapid prototyping and UI scaffolding</li>
-              <li>Accelerated implementation of common modules</li>
-              <li>Structured reviews and automated checks</li>
-              <li>Test coverage and regression prevention</li>
-              <li>Documentation that stays current</li>
-            </ul>
+            <div class="ai-benefits">
+              <div class="benefit-item">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-content">
+                  <div class="benefit-title">Rapid prototyping</div>
+                  <div class="benefit-desc">UI scaffolding and quick iterations</div>
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <div class="benefit-icon">🔧</div>
+                <div class="benefit-content">
+                  <div class="benefit-title">Common modules</div>
+                  <div class="benefit-desc">Accelerated implementation</div>
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <div class="benefit-content">
+                  <div class="benefit-title">Automated checks</div>
+                  <div class="benefit-desc">Structured reviews and validation</div>
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <div class="benefit-icon">🛡️</div>
+                <div class="benefit-content">
+                  <div class="benefit-title">Test coverage</div>
+                  <div class="benefit-desc">Regression prevention</div>
+                </div>
+              </div>
+
+              <div class="benefit-item">
+                <div class="benefit-icon">📝</div>
+                <div class="benefit-content">
+                  <div class="benefit-title">Documentation</div>
+                  <div class="benefit-desc">Always up to date</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -253,21 +301,24 @@
       </div>
     </section>
 
-    <section id="case-studies" class="section">
+    <section id="case-studies" class="section alt">
       <div class="container">
-        <h2>Case Studies</h2>
-        <p class="subtitle">Selected work where we shipped real outcomes.</p>
-    
-        <div class="cards">
-          <a class="card case-study-teaser" href="./bricksearch-case-study.html">
-            <div class="case-study-text">
+        <div class="sec-head">
+          <div class="eyebrow">Case Studies</div>
+          <h2>Selected work</h2>
+          <p>Real projects where we shipped measurable outcomes.</p>
+        </div>
+
+        <div class="case-studies-grid">
+          <a class="case-study-card" href="./bricksearch-case-study.html">
+            <div class="case-study-media">
+              <img src="./assets/case-studies/bricksearch-teaser.png" alt="Brick Search app preview" />
+            </div>
+
+            <div class="case-study-content">
               <h3>Brick Search App</h3>
               <p>Subscriptions, shopping cart, UI modernization, and backend API development.</p>
               <span class="case-study-cta">Read case study →</span>
-            </div>
-        
-            <div class="case-study-media">
-              <img src="./assets/case-studies/bricksearch-teaser.png" alt="Brick Search preview" />
             </div>
           </a>
         </div>
@@ -275,7 +326,7 @@
     </section>
 
     <!-- Moose App -->
-    <section id="mooseapp" class="section alt">
+    <section id="mooseapp" class="section">
       <div class="container">
         <div class="callout">
           <div>
@@ -295,18 +346,20 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section footer-bg">
+      <div class="footer-bg-layer" aria-hidden="true"></div>
+      <div class="footer-dot-mesh" aria-hidden="true"></div>
+
       <div class="container">
         <div class="cta">
           <div>
             <h2>Ready to build your app?</h2>
             <p>
-              Book a free consult and we’ll outline a clear plan: scope, timeline, and a cost range.
+              Book a free consult and we'll outline a clear plan: scope, timeline, and a cost range.
             </p>
           </div>
 
           <div class="cta-actions">
-            <a class="btn primary" href="mailto:hello@greymoose.ca">Email us</a>
             <a class="btn secondary" href="#" onclick="alert('Replace this with your booking link (Calendly, etc.).'); return false;">
               Booking link
             </a>
@@ -316,7 +369,6 @@
         <footer>
           <div>© <span id="year"></span> Grey Moose Technologies, Inc. • Edmonton, AB, Canada</div>
           <div class="foot-links">
-            <a href="#" onclick="alert('Replace with your LinkedIn URL.'); return false;">LinkedIn</a>
             <a href="#top">Back to top</a>
           </div>
         </footer>
