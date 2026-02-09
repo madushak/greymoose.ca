@@ -81,21 +81,10 @@
     }
     .brand{display:flex; align-items:center; gap:12px; min-width:240px}
     .logo{
-      width:38px;height:38px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(37,99,235,.02));
-      border: 1px solid var(--line);
-      position:relative; overflow:hidden;
-    }
-    .logo:before{
-      content:"";
-      position:absolute; inset:-20%;
-      background:
-        radial-gradient(circle at 30% 35%, rgba(37,99,235,.22), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(99,102,241,.14), transparent 48%);
-      transform: rotate(10deg);
+      width:38px;height:38px;
     }
     .brand-title{font-size:13px;font-weight:800}
-    .brand-sub{font-size:12px;color:var(--muted-2);margin-top:2px}
+    .brand-sub{font-size:12px;color:var(--muted-2);margin-top:0px}
     nav.desktop{display:none; gap:18px; align-items:center}
     nav.desktop a{
       font-size:13px;
