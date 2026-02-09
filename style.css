@@ -221,7 +221,145 @@
     .hero-actions{margin-top:22px; display:flex; gap:12px; flex-wrap:wrap}
     .trustline{margin-top:12px; font-size:13px; color: rgba(255,255,255,.88);}
 
-    .hero-card{padding: 20px;}
+    .hero-card{
+      display: none;
+    }
+
+    @media (min-width: 860px){
+      .hero-card{
+        display: block;
+      }
+    }
+
+    /* Stats Dashboard - Modern Design */
+    .stats-dashboard{
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 0;
+      padding: 28px;
+      box-shadow:
+        0 8px 32px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.15);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .stat-item{
+      text-align: center;
+      padding: 20px;
+      border-radius: 0;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-value{
+      font-size: 48px;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #ffffff, rgba(255,255,255,.85));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-unit{
+      font-size: 30px;
+      margin-left: 4px;
+      color: #fbbf24;
+      filter: drop-shadow(0 2px 4px rgba(251,191,36,.3));
+    }
+
+    .stat-unit-inline{
+      font-size: 36px;
+      font-weight: 800;
+      color: rgba(255,255,255,.75);
+      margin-left: 2px;
+    }
+
+    .stat-label{
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.95);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .stat-period{
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,.55);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .stat-availability{
+      margin-top: 4px;
+    }
+
+    .availability-indicator{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(16,185,129,.18), rgba(5,150,105,.12));
+      border: 1px solid rgba(16,185,129,.3);
+      backdrop-filter: blur(10px);
+      box-shadow:
+        0 4px 12px rgba(16,185,129,.15),
+        inset 0 1px 0 rgba(255,255,255,.1);
+      transition: all .3s ease;
+    }
+
+    .availability-indicator:hover{
+      background: linear-gradient(135deg, rgba(16,185,129,.24), rgba(5,150,105,.18));
+      border-color: rgba(16,185,129,.4);
+      box-shadow:
+        0 6px 20px rgba(16,185,129,.25),
+        inset 0 1px 0 rgba(255,255,255,.15);
+    }
+
+    .pulse-dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow:
+        0 0 0 0 rgba(16,185,129,.7),
+        0 0 8px rgba(16,185,129,.4);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse{
+      0%, 100%{
+        box-shadow:
+          0 0 0 0 rgba(16,185,129,.7),
+          0 0 8px rgba(16,185,129,.4);
+      }
+      50%{
+        box-shadow:
+          0 0 0 6px rgba(16,185,129,0),
+          0 0 12px rgba(16,185,129,.6);
+      }
+    }
+
+    .availability-text{
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,.98);
+      letter-spacing: 0.01em;
+    }
     .hero-image{width:100%; height:auto; display:block; max-width:100%;}
 
     /* Section header */
@@ -1246,4 +1384,31 @@
         border-left: 1px solid rgba(255,255,255,.16);
       }
       .what-col h3{ font-size: 22px; }
+    }
+
+    /* Tech Logos */
+    .tech-logos{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 42px;
+      padding: 24px 20px;
+      flex-wrap: wrap;
+    }
+    .tech-logo{
+      height: 30px;
+      width: auto;
+      opacity: 0.88;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .tech-logo:hover{
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    @media (min-width: 860px){
+      .tech-logos{
+        gap: 48px;
+        padding: 32px 20px;
+      }
     }
