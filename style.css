@@ -222,25 +222,27 @@
 
     /* Stats Dashboard - Modern Design */
     .stats-dashboard{
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 0;
-      padding: 28px;
-      box-shadow:
-        0 8px 32px rgba(0,0,0,.12),
-        inset 0 1px 0 rgba(255,255,255,.15);
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
+      position: relative;
+      min-height: 120px;
     }
 
     .stat-item{
       text-align: center;
       padding: 20px;
       border-radius: 0;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      position: relative;
-      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      pointer-events: none;
+    }
+
+    .stat-item.active{
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .stat-value{
@@ -844,30 +846,11 @@
     footer{
       margin-top:32px;
       padding-top:24px;
+      padding-bottom:60px;
       border-top:1px solid rgba(255,255,255,.18);
       color: rgba(255,255,255,.78);
       font-size:13px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    .foot-links{display:flex; gap:10px; flex-wrap:wrap}
-    .foot-links a{
-      padding:10px 14px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.28);
-      background: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.92);
-      backdrop-filter: blur(8px);
-      transition: background .12s ease, border-color .12s ease;
-      font-weight: 600;
-      min-height: 44px; /* Better touch target */
-      display: inline-flex;
-      align-items: center;
-    }
-    .foot-links a:hover{
-      background: rgba(255,255,255,.18);
-      border-color: rgba(255,255,255,.38);
+      text-align:center;
     }
     .top-main-btn{display:none}
 
@@ -920,6 +903,48 @@
       border-radius: 0px 0px 8px 8px;
     }
 
+    /* Image Section Background */
+    .image-section-bg {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      min-height: 400px;
+    }
+    .image-section-bg-layer {
+      position: absolute;
+      inset: 0%;
+      background-image: url(image-2.webp);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      border-radius: 8px;
+    }
+    .image-section-dot-mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,1) 1px, transparent 1.6px);
+      background-size: 44px 44px;
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .image-section-bg .container {
+      position: relative;
+      z-index: 1;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+    .image-section-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+      border-radius: 8px;
+    }
+
     /* Footer background */
     .footer-bg {
       position: relative;
@@ -929,7 +954,7 @@
     .footer-bg-layer {
       position: absolute;
       inset: 0%;
-      background-image: url(footer.webp);
+      background-image: url(image-1.webp);
       background-size: cover;
       background-position: bottom;
       background-repeat: no-repeat;
@@ -949,6 +974,7 @@
     .footer-bg .container {
       position: relative;
       z-index: 1;
+      padding-top: 120px;
     }
     .footer-bg::after {
       content: "";

@@ -88,15 +88,24 @@
           <div class="hero-card">
             <div class="stats-dashboard">
               <div class="stat-item">
-                <div class="stat-value">87</div>
-                <div class="stat-label">Features shipped</div>
-                <div class="stat-period">in 2025</div>
-              </div>
-
-              <div class="stat-item">
                 <div class="stat-value">40<span class="stat-unit-inline">%</span></div>
                 <div class="stat-label">Faster delivery</div>
                 <div class="stat-period">with AI workflow</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">2<span class="stat-unit-inline">-4</span></div>
+                <div class="stat-label">Week MVP</div>
+                <div class="stat-period">rapid prototyping</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100<span class="stat-unit-inline">%</span></div>
+                <div class="stat-label">Code ownership</div>
+                <div class="stat-period">full source access</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">10<span class="stat-unit-inline">+</span></div>
+                <div class="stat-label">Years experience</div>
+                <div class="stat-period">senior engineers</div>
               </div>
             </div>
           </div>
@@ -271,6 +280,18 @@
       </div>
     </section>
 
+    <!-- Image Section -->
+    <section class="section image-section-bg">
+      <div class="image-section-bg-layer" aria-hidden="true"></div>
+      <div class="image-section-dot-mesh" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="image-section-content">
+          <!-- Content can be added here if needed -->
+        </div>
+      </div>
+    </section>
+
     <!-- Process -->
     <section id="process" class="section">
       <div class="container">
@@ -383,9 +404,6 @@
 
         <footer>
           <div>© <span id="year"></span> Grey Moose Technologies, Inc. • Edmonton, AB, Canada</div>
-          <div class="foot-links">
-            <a href="#top">Back to top</a>
-          </div>
         </footer>
       </div>
     </section>
@@ -393,6 +411,21 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Stat rotation
+    const statItems = document.querySelectorAll('.stat-item');
+    if (statItems.length > 1) {
+      let currentIndex = 0;
+      statItems[currentIndex].classList.add('active');
+
+      setInterval(() => {
+        statItems[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % statItems.length;
+        statItems[currentIndex].classList.add('active');
+      }, 3000);
+    } else if (statItems.length === 1) {
+      statItems[0].classList.add('active');
+    }
 
     const btn = document.getElementById("menuBtn");
     const panel = document.getElementById("menuPanel");
