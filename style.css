@@ -63,8 +63,6 @@
     .section{padding:76px 0}
     .section.alt{
       background: linear-gradient(180deg, var(--surface), rgba(248,250,252,0));
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
     }
 
     /* Top nav */
@@ -1131,7 +1129,6 @@
     }
 
     .case-study-hero{
-      border: 1px solid var(--line);
       border-radius: 0;
       overflow: hidden;
       background: var(--surface);
