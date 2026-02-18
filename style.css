@@ -1674,3 +1674,38 @@
       border-color: var(--accent);
       color: var(--accent);
     }
+
+    /* Download Badges */
+    .cs-download-badges{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 0;
+    }
+    .cs-download-label{
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+    .cs-badge-row{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .cs-badge-row a{
+      display: inline-flex;
+    }
+    .store-badge{
+      height: 46px;
+      width: auto;
+      display: block;
+    }
+    .store-badge--play{
+      height: 68px; /* Google Play badge has more whitespace built in */
+    }
